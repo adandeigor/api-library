@@ -1,0 +1,53 @@
+# Dépendances
+node_modules/
+
+# Builds
+dist/
+build/
+.next/
+out/
+
+# Environnements et configs sensibles
+.env*
+.env.*.local
+
+# Logs & debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tests & coverage
+coverage/
+test-output/
+
+# Caches
+.cache/
+.pnpm-store/
+turbo/
+.eslintcache
+.vite/
+
+# IDEs & éditeurs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Systèmes / fichiers perso
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# Lint-staged / husky
+.husky/
+*.lintstagedrc
+
+# TypeScript
+*.tsbuildinfo
+
+# Autres générés
+*.local
