@@ -5,11 +5,12 @@ import { ActionType, logAction } from '@/lib/logger';
 import { libraryUpdateSchema } from "@/lib/validator";
 
 export async function GET(
-    { params }: { params: { libraryId: string } }
+    request : Request,
+    context : {params:any}
 ) {
     try {
         // 1. Convertir l'ID
-        const libraryId = parseInt(params.libraryId);
+        const {libraryId} = context.params;
         if (isNaN(libraryId)) {
             return NextResponse.json(
                 { error: 'ID de bibliothèque invalide' },
@@ -29,7 +30,6 @@ export async function GET(
                 _count: {
                     select: {
                         books: true,
-                        users: true
                     }
                 }
             }
@@ -55,7 +55,7 @@ export async function GET(
 
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { libraryId: string } }
+    context : {params : any}
 ) {
     try {
         // Récupération des infos utilisateur depuis les headers middleware
@@ -71,7 +71,7 @@ export async function PATCH(
             );
         }
 
-        const libraryId = parseInt(params.libraryId);
+        const {libraryId} = context.params;
         if (isNaN(libraryId)) {
             return NextResponse.json(
                 { error: 'ID de bibliothèque invalide' },
@@ -133,7 +133,7 @@ export async function PATCH(
 
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { libraryId: string } }
+    context : {params : any}
 ) {
     try {
         // Vérification ADMIN via headers middleware
@@ -148,7 +148,7 @@ export async function DELETE(
             );
         }
 
-        const libraryId = parseInt(params.libraryId);
+        const {libraryId} = context.params;
         if (isNaN(libraryId)) {
             return NextResponse.json(
                 { error: 'ID de bibliothèque invalide' },
@@ -162,7 +162,6 @@ export async function DELETE(
                 id: libraryId,
                 OR: [
                     { books: { some: {} } },
-                    { users: { some: {} } }
                 ]
             },
             select: { id: true }

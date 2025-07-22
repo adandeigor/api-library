@@ -9,7 +9,6 @@ export async function generateToken(user: User): Promise<string> {
       id: user.id,
       email: user.email,
       role: user.role,
-      libraryId: user.libraryId,
     })
       .setProtectedHeader({ alg: 'HS256' }) //algoithme de signature
       .setIssuedAt()

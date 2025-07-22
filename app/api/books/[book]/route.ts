@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(request: Request, { book }: { book: string }) {
+export async function GET(request: Request, context: { params: any }) {
   try {
+    const { book } = context.params;
     const bookId = parseInt(book);
     if (isNaN(bookId)) {
       return NextResponse.json({ error: "ID de livre invalide" }, { status: 400 });

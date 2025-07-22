@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
                 firstName: true,
                 lastName: true,
                 role: true,
-                libraryId: true
+                library: true
             }
         })
 
