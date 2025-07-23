@@ -27,7 +27,7 @@ export async function GET(request: Request, context: { params: any }) {
     })
 
     Response.json({
-        data : library,
+        library : library,
         message : "Librairie récupérée avec succès",
         status :  200
     })
