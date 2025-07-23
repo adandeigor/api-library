@@ -1,7 +1,7 @@
 import { UserRole } from "@/app/generated/prisma";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(request: Request, context: { params: any }) {
+export async function GET(request: Request) {
   try {
     const headers = request.headers;
     const currentUserRole = headers.get("x-user-role") as UserRole;
@@ -13,13 +13,6 @@ export async function GET(request: Request, context: { params: any }) {
       currentUserRole === UserRole.MANAGER;
     if (!isAdmin) {
       return Response.json({ error: "Permission refusée" }, { status: 403 });
-    }
-    const { id } = context.params;
-    if (isNaN(id)) {
-      return Response.json(
-        { error: "L'id de l'utilisateur est requis" },
-        { status: 400 }
-      );
     }
 
     const library = prisma.library.findUnique({
