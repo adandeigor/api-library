@@ -32,6 +32,12 @@ export const bookCreateSchema = z.object({
   categoryId: z.number().int().positive("ID catégorie invalide"),
   isbn: z.string().min(10).optional(),
   summary: z.string().optional(),
+  language: z.string().optional(),
+  genre : z.string().optional(),
+  edition: z.string().optional(),
+  price : z.number().optional(),
+  isSellable : z.boolean().optional(),
+  stockQuantity : z.number().optional(),
   pages: z.number().int().positive().optional(),
   coverUrl: z.string().url("URL de couverture invalide").optional(),
   status: z.nativeEnum(BookStatus).default("AVAILABLE")
