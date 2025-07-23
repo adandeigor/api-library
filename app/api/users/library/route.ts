@@ -16,7 +16,21 @@ export async function GET(request: Request) {
     }
 
     const library = prisma.library.findUnique({
-        where : {managerId : parseInt(currentUserId as string)}
+        where : {managerId : parseInt(currentUserId as string)},
+        select: {
+          id: true,
+          name: true,
+          address: true,
+          contact: true,
+          ifu: true,
+          rccm: true,
+          status: true,
+          rejectionReason: true,
+          managerId: true,
+          manager:true,
+          createdAt: true,
+          updatedAt: true,
+        },
     })
 
     Response.json({
