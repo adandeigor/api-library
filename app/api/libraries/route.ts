@@ -8,7 +8,9 @@ import { z } from 'zod';
 const libraryCreateSchema = z.object({
     name: z.string().min(3, "Le nom doit contenir au moins 3 caractères"),
     address: z.string().min(10, "L'adresse doit contenir au moins 10 caractères").optional(),
-    contact: z.string().min(6, "Le contact doit contenir au moins 6 caractères").optional()
+    contact: z.string().min(6, "Le contact doit contenir au moins 6 caractères").optional(),
+    ifu : z.string().url(),
+    rccm : z.string().url()
 });
 
 export async function POST(request: NextRequest) {
@@ -60,7 +62,9 @@ export async function POST(request: NextRequest) {
                     name: validation.data.name,
                     address: validation.data.address,
                     contact: validation.data.contact,
-                    managerId: parseInt(currentUserId)
+                    managerId: parseInt(currentUserId),
+                    ifu : validation.data.ifu,
+                    rccm : validation.data.rccm
                 }
             });
 
