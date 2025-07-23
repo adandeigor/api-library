@@ -59,7 +59,8 @@ export async function POST(request: NextRequest) {
                 data: {
                     name: validation.data.name,
                     address: validation.data.address,
-                    contact: validation.data.contact
+                    contact: validation.data.contact,
+                    managerId: parseInt(currentUserId)
                 }
             });
 
