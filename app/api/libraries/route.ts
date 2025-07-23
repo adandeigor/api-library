@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         const currentUserId = headers.get('x-user-id');
         const currentUserRole = headers.get('x-user-role') as UserRole;
 
-        if (!currentUserId || currentUserRole !== UserRole.ADMIN) {
+        if (!currentUserId || currentUserRole !== UserRole.ADMIN && currentUserRole !== UserRole.MANAGER) {
             return NextResponse.json(
                 { error: 'Permission refusée - Seul un ADMIN peut créer une bibliothèque' },
                 { status: 403 }

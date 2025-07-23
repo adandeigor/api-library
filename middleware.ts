@@ -130,7 +130,7 @@ function hasPermission(role: UserRole, path: string, method: string): boolean {
     [UserRole.MANAGER]: [
       { path: '/api/users', methods: ['GET'] },
       { path: '/api/users/me', methods: ['GET'] },
-      { path: '/api/libraries', methods: ['GET', 'PATCH'] },
+      { path: '/api/libraries', methods: ['GET', 'PATCH', 'POST'] },
       { path: '/api/libraries/[library]', methods: ['GET', 'PATCH'] },
       { path: '/api/libraries/[library]/managers', methods: ['GET'] },
       { path: '/api/libraries/[library]/books', methods: ['GET'] },
